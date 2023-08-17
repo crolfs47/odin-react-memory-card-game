@@ -8,16 +8,17 @@ const Card = () => {
     const fetchCatAPIData = async () => {
       try {
         const response = await fetch(
-          `https://api.thecatapi.com/v1/images/search`, {mode: 'cors'}
+          `https://api.thecatapi.com/v1/images/search?`,
+          { mode: "cors" }
         );
         const catData = await response.json();
         console.log(catData);
         setCat({
           id: catData[0].id,
           url: catData[0].url,
-        })
+        });
       } catch (error) {
-        console.log(error)
+        console.log(error);
         return error;
       }
     };
@@ -28,9 +29,7 @@ const Card = () => {
   return (
     <>
       <div className="card-container">
-        <div>
-          <img src={cat.url} />
-        </div>
+        <img src={cat.url} alt={cat.id} width="200" />
       </div>
     </>
   );
