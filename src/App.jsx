@@ -2,18 +2,21 @@ import "./App.css";
 import { useState } from "react";
 import Header from "./components/Header";
 import Scoreboard from "./components/Scoreboard";
-import Cards from "./components/Cards";
+import Gameboard from "./components/Gameboard";
 
 const App = () => {
   const [currScore, setCurrScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [catImages, setCatImages] = useState([]);
+  const [gameOver, setGameOver] = useState(false);
 
   // const checkHighScore = () => {
   //   if (currScore > highScore) {
   //     setHighScore(currScore)
   //   }
   // }
+
+
 
   return (
     <>
@@ -24,13 +27,15 @@ const App = () => {
           currScore={currScore}
           highScore={highScore}
         />
-        <Cards
+        <Gameboard
           catImages={catImages}
           updateCatImages={(newCatImages) => setCatImages(newCatImages)}
           currScore={currScore}
           updateCurrScore={(newCurrScore) => setCurrScore(newCurrScore)}
           highScore={highScore}
           updateHighScore={(newHighScore) => setHighScore(newHighScore)}
+          gameOver={gameOver}
+          updateGameOver={(newGameOver) => setGameOver(newGameOver)}
         />
       </div>
     </>
