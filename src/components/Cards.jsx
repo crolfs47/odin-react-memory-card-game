@@ -2,7 +2,6 @@ import "../styles/Cards.css";
 import { useState, useEffect } from "react";
 
 const Cards = ({ catImages, updateCatImages }) => {
-
   useEffect(() => {
     const abortController = new AbortController(); // Added this as part of cleanup function to get rid of Strictmode issue in dev
 
@@ -36,12 +35,23 @@ const Cards = ({ catImages, updateCatImages }) => {
     return () => abortController.abort();
   }, []);
 
+  const handleClick = (clickedCat) => {
+    clickedCat.clicked = true;
+    const newCatImages = catImages.map((cat) => {
+      if (cat.id === clickedCat.id) {
+        return clickedCat;
+      }
+      return cat;
+    });
+    updateCatImages(newCatImages);
+  };
+
   return (
     <>
       <div className="card-container">
         {catImages.map((cat) => {
           return (
-            <div className="card" key={cat.id}>
+            <div className="card" key={cat.id} onClick={() => handleClick(cat)}>
               <img src={cat.url} alt={cat.id} key={cat.id} width="200" />
             </div>
           );
