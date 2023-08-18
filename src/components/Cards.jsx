@@ -1,8 +1,7 @@
-import "../styles/Card.css";
+import "../styles/Cards.css";
 import { useState, useEffect } from "react";
 
-const Card = () => {
-  // const [cat, setCat] = useState({});
+const Cards = () => {
   const [catImages, setCatImages] = useState([]);
 
   useEffect(() => {
@@ -27,11 +26,6 @@ const Card = () => {
           url: cat.url,
         }));
         setCatImages(newArray);
-
-        // setCat({
-        //   id: catData[0].id,
-        //   url: catData[0].url,
-        // });
       } catch (error) {
         console.log(error);
         return error;
@@ -45,11 +39,15 @@ const Card = () => {
     <>
       <div className="card-container">
         {catImages.map((cat) => {
-          return (<div className="card" key={cat.id}><img src={cat.url} alt={cat.id} key={cat.id} width="200" /></div>);
+          return (
+            <div className="card" key={cat.id}>
+              <img src={cat.url} alt={cat.id} key={cat.id} width="200" />
+            </div>
+          );
         })}
       </div>
     </>
   );
 };
 
-export default Card;
+export default Cards;
