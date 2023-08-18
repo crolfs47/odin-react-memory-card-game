@@ -1,11 +1,15 @@
 import "../styles/Scoreboard.css";
 
-const Scoreboard = () => {
+const Scoreboard = ({
+  currScore,
+  highScore,
+}) => {
+
   return (
     <>
       <div className="scoreboard-container">
-        <div>Current Score:</div>
-        <div>Best Score:</div>
+        <div>Current Score: {currScore} </div>
+        <div>High Score: {highScore} </div>
       </div>
     </>
   );

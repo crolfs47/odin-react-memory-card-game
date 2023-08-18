@@ -1,7 +1,14 @@
 import "../styles/Cards.css";
 import { useState, useEffect } from "react";
 
-const Cards = ({ catImages, updateCatImages }) => {
+const Cards = ({
+  catImages,
+  updateCatImages,
+  currScore,
+  updateCurrScore,
+  highScore,
+  updateHighScore,
+}) => {
   useEffect(() => {
     const abortController = new AbortController(); // Added this as part of cleanup function to get rid of Strictmode issue in dev
 
@@ -35,15 +42,28 @@ const Cards = ({ catImages, updateCatImages }) => {
     return () => abortController.abort();
   }, []);
 
+  const checkHighScore = () => {
+    if (currScore > highScore) {
+      updateHighScore(currScore);
+    }
+  };
+
   const handleClick = (clickedCat) => {
-    clickedCat.clicked = true;
-    const newCatImages = catImages.map((cat) => {
-      if (cat.id === clickedCat.id) {
-        return clickedCat;
-      }
-      return cat;
-    });
-    updateCatImages(newCatImages);
+    if (clickedCat.clicked === false) {
+      clickedCat.clicked = true;
+      updateCurrScore(currScore + 1);
+      // console.log(currScore);
+      checkHighScore(); // not sure how to fix this lag?
+      const newCatImages = catImages.map((cat) => {
+        if (cat.id === clickedCat.id) {
+          return clickedCat;
+        }
+        return cat;
+      });
+      updateCatImages(newCatImages);
+    } else {
+      console.log("game over");
+    }
   };
 
   return (

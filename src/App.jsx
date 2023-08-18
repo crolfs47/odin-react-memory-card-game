@@ -5,16 +5,33 @@ import Scoreboard from "./components/Scoreboard";
 import Cards from "./components/Cards";
 
 const App = () => {
-  const [currScore, setCurrScore] = useState();
-  const [highScore, setHighScore] = useState();
+  const [currScore, setCurrScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   const [catImages, setCatImages] = useState([]);
+
+  // const checkHighScore = () => {
+  //   if (currScore > highScore) {
+  //     setHighScore(currScore)
+  //   }
+  // }
 
   return (
     <>
       <div>
         <Header />
-        <Scoreboard />
-        <Cards catImages={catImages} updateCatImages={(newCatImages) => setCatImages(newCatImages)}/>
+        <Scoreboard
+          catImages={catImages}
+          currScore={currScore}
+          highScore={highScore}
+        />
+        <Cards
+          catImages={catImages}
+          updateCatImages={(newCatImages) => setCatImages(newCatImages)}
+          currScore={currScore}
+          updateCurrScore={(newCurrScore) => setCurrScore(newCurrScore)}
+          highScore={highScore}
+          updateHighScore={(newHighScore) => setHighScore(newHighScore)}
+        />
       </div>
     </>
   );
