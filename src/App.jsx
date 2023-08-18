@@ -10,14 +10,6 @@ const App = () => {
   const [catImages, setCatImages] = useState([]);
   const [gameOver, setGameOver] = useState(false);
 
-  // const checkHighScore = () => {
-  //   if (currScore > highScore) {
-  //     setHighScore(currScore)
-  //   }
-  // }
-
-
-
   return (
     <>
       <div>

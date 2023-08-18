@@ -45,7 +45,7 @@ const Gameboard = ({
     return () => abortController.abort();
   }, [gameOver]);
 
-  const checkHighScore = () => {
+  const checkHighScore = (currScore) => {
     if (currScore > highScore) {
       updateHighScore(currScore);
     }
@@ -55,8 +55,7 @@ const Gameboard = ({
     if (clickedCat.clicked === false) {
       clickedCat.clicked = true;
       updateCurrScore(currScore + 1);
-      // console.log(currScore);
-      checkHighScore(); // not sure how to fix this lag?
+      checkHighScore(currScore + 1); 
       const newCatImages = catImages.map((cat) => {
         if (cat.id === clickedCat.id) {
           return clickedCat;
