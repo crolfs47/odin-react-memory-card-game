@@ -27,7 +27,7 @@ const Card = () => {
           url: cat.url,
         }));
         setCatImages(newArray);
-        
+
         // setCat({
         //   id: catData[0].id,
         //   url: catData[0].url,
@@ -45,7 +45,7 @@ const Card = () => {
     <>
       <div className="card-container">
         {catImages.map((cat) => {
-          return <img src={cat.url} alt={cat.id} key={cat.id} width="200" />;
+          return (<div className="card" key={cat.id}><img src={cat.url} alt={cat.id} key={cat.id} width="200" /></div>);
         })}
       </div>
     </>
