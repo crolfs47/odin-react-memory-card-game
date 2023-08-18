@@ -1,0 +1,9 @@
+.scoreboard-container {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 16px;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: solid  rgb(82, 145, 119)  4px;
+}

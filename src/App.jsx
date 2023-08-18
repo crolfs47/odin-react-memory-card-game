@@ -13,7 +13,7 @@ const App = () => {
   return (
     <>
       <div>
-        <Header />
+        <Header gameOver={gameOver} />
         <Scoreboard
           catImages={catImages}
           currScore={currScore}

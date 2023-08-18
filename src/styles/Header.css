@@ -1,0 +1,8 @@
+h1 {
+  margin-bottom: 16px;
+}
+
+.game-over {
+  padding: 3px;
+  color: red;
+}
