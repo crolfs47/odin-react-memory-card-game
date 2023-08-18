@@ -1,17 +1,20 @@
 import "./App.css";
+import { useState } from "react";
 import Header from "./components/Header";
 import Scoreboard from "./components/Scoreboard";
-import Gameboard from "./components/Gameboard";
 import Cards from "./components/Cards";
 
 const App = () => {
+  const [currScore, setCurrScore] = useState();
+  const [highScore, setHighScore] = useState();
+  const [catImages, setCatImages] = useState([]);
+
   return (
     <>
       <div>
         <Header />
         <Scoreboard />
-        <Gameboard />
-        <Cards />
+        <Cards catImages={catImages} updateCatImages={(newCatImages) => setCatImages(newCatImages)}/>
       </div>
     </>
   );

@@ -1,13 +1,12 @@
 import "../styles/Cards.css";
 import { useState, useEffect } from "react";
 
-const Cards = () => {
-  const [catImages, setCatImages] = useState([]);
+const Cards = ({ catImages, updateCatImages }) => {
 
   useEffect(() => {
     const abortController = new AbortController(); // Added this as part of cleanup function to get rid of Strictmode issue in dev
 
-    const fetchCatAPIData = async () => {
+    const fetchCats = async () => {
       try {
         const response = await fetch(
           `https://api.thecatapi.com/v1/images/search?limit=12`,
@@ -24,14 +23,16 @@ const Cards = () => {
         const newArray = catData.map((cat) => ({
           id: cat.id,
           url: cat.url,
+          clicked: false,
         }));
-        setCatImages(newArray);
+        updateCatImages(newArray);
       } catch (error) {
         console.log(error);
         return error;
       }
     };
-    fetchCatAPIData();
+
+    fetchCats();
     return () => abortController.abort();
   }, []);
 
