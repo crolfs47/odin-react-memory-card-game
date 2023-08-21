@@ -11,7 +11,7 @@ const Header = ({ gameOver, winner }) => {
         </div>
         {gameOver && (
           <h2 className="game-over">
-            YOU ALREADY CLICKED ON THAT CAT! GAME OVER!
+            GAME OVER!
           </h2>
         )}
         {winner && <h2 className="game-over">YOU WIN!</h2>}
