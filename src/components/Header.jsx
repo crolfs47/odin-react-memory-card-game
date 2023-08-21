@@ -1,6 +1,6 @@
 import "../styles/Header.css";
 
-const Header = ({gameOver}) => {
+const Header = ({gameOver, winner}) => {
   return (
     <>
       <div className="header-container">
@@ -8,7 +8,12 @@ const Header = ({gameOver}) => {
         <div>Get points by clicking on an image but don't click on any more than once!</div>
         {gameOver && (
           <h2 className="game-over">
-            GAME OVER!
+            YOU ALREADY CLICKED ON THAT CAT! GAME OVER!
+          </h2>
+        )}
+        {winner && (
+          <h2 className="game-over">
+            YOU WIN!
           </h2>
         )}
       </div>

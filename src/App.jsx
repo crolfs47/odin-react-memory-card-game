@@ -9,11 +9,12 @@ const App = () => {
   const [highScore, setHighScore] = useState(0);
   const [catImages, setCatImages] = useState([]);
   const [gameOver, setGameOver] = useState(false);
+  const [winner, setWinner] = useState(false);
 
   return (
     <>
       <div>
-        <Header gameOver={gameOver} />
+        <Header gameOver={gameOver} winner={winner} />
         <Scoreboard
           catImages={catImages}
           currScore={currScore}
@@ -28,6 +29,8 @@ const App = () => {
           updateHighScore={(newHighScore) => setHighScore(newHighScore)}
           gameOver={gameOver}
           updateGameOver={(newGameOver) => setGameOver(newGameOver)}
+          winner={winner}
+          updateWinner={(newWinner) => setWinner(newWinner)}
         />
       </div>
     </>
