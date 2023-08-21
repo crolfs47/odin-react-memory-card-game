@@ -13,6 +13,12 @@ const Gameboard = ({
   winner,
   updateWinner,
 }) => {
+  const newGame = () => {
+    updateCurrScore(0);
+    updateGameOver(false);
+    updateWinner(false);
+  };
+
   useEffect(() => {
     const abortController = new AbortController(); // Added this as part of cleanup function to get rid of Strictmode issue in dev
 
@@ -36,17 +42,17 @@ const Gameboard = ({
           clicked: false,
         }));
         updateCatImages(newArray);
-        updateGameOver(false);
-        updateWinner(false);
       } catch (error) {
         console.log(error);
         return error;
       }
     };
 
-    fetchCats();
+    if (gameOver === false) {
+      fetchCats();
+    }
     return () => abortController.abort();
-  }, [gameOver, winner]);
+  }, [gameOver]);
 
   // used Fisher Yates shuffle algorithm
   const shuffleCards = (array) => {
@@ -69,7 +75,11 @@ const Gameboard = ({
   };
 
   const handleClick = (clickedCat) => {
-    if (clickedCat.clicked === false) {
+    if (
+      clickedCat.clicked === false &&
+      gameOver === false &&
+      winner === false
+    ) {
       clickedCat.clicked = true;
       const clickedCatImages = catImages.map((cat) => {
         if (cat.id === clickedCat.id) {
@@ -83,13 +93,17 @@ const Gameboard = ({
       shuffleCards(clickedCatImages);
       updateCatImages(clickedCatImages);
     } else {
-      updateCurrScore(0);
       updateGameOver(true);
     }
   };
 
   return (
     <>
+      <div>
+        <button id="new-game-button" onClick={newGame}>
+          New Game
+        </button>
+      </div>
       <div className="card-container">
         {catImages.map((cat) => {
           return (

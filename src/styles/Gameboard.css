@@ -1,6 +1,20 @@
+button {
+  border: solid rgb(82, 145, 119) 4px;
+  background-color: rgb(64, 112, 92);
+  border-radius: 12px;
+  padding: 6px 12px;
+  color: white;
+  margin-bottom: 6px;
+}
+button:hover {
+  cursor: pointer;
+  background-color: rgb(128, 176, 156);
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
+  
   justify-content: center;
   max-width: 1200px;
 }
