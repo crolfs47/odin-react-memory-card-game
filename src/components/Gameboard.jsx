@@ -45,6 +45,14 @@ const Gameboard = ({
     return () => abortController.abort();
   }, [gameOver]);
 
+  // used Fisher Yates shuffle algorithm
+  const shuffleCards = (array) => {
+    for (let i=array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
+
   const checkHighScore = (currScore) => {
     if (currScore > highScore) {
       updateHighScore(currScore);
@@ -56,15 +64,15 @@ const Gameboard = ({
       clickedCat.clicked = true;
       updateCurrScore(currScore + 1);
       checkHighScore(currScore + 1); 
-      const newCatImages = catImages.map((cat) => {
+      const clickedCatImages = catImages.map((cat) => {
         if (cat.id === clickedCat.id) {
           return clickedCat;
         }
         return cat;
       });
-      updateCatImages(newCatImages);
+      shuffleCards(clickedCatImages);
+      updateCatImages(clickedCatImages);
     } else {
-      console.log("game over"); // need to add functions to restart game here
       updateCurrScore(0);
       updateGameOver(true);
     }
