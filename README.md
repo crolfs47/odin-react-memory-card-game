@@ -28,5 +28,4 @@ Assignment - https://www.theodinproject.com/lessons/react-new-memory-card
 View Project - https://golden-chebakia-46ec24.netlify.app/
 
 ## Screenshots:
-Initial view:
-![f](https://user-images.githubusercontent.com/97067689/262114484-f8d8a12b-da22-49db-819e-62519b56439e.png)
+![f](https://user-images.githubusercontent.com/97067689/262142290-03975f8d-53c6-47be-bdad-c1e33c2e9bb1.png)
